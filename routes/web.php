@@ -21,6 +21,9 @@ Route::get('/home', function () {
     return View::make('index');
    });
 
+
+// STUDENT 
+
 Route::get('signup', [
     'uses' => 'StudentController@getSignup',
     'as' => 'user.signups',
@@ -45,5 +48,29 @@ Route::get('/student/{id}/edit', [
 
 Route::put('/student/{id}', 'StudentController@update')->name('user.update');
 
+// EMPLOYEE
+Route::get('esignup', [
+    'uses' => 'EmployeeController@getSignup',
+    'as' => 'employeee.signups',
+        ]);
+
+Route::post('/esignups', [
+    'uses' => 'EmployeeController@postSignup',
+    'as' => 'employee.signup',
+]);
+
+
+Route::get('eprofile', [
+    'uses' => 'EmployeeController@getProfile',
+    'as' => 'employee.profile',
+]);
+
+
+Route::get('/employee/{id}/edit', [
+    'uses' => 'EmployeeController@edit',
+    'as' => 'employee.edit',
+]);
+
+Route::put('/employee/{id}', 'EmployeeController@update')->name('employee.update');
 
 

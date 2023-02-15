@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Studentinfo::class,'user_id','id');
     }
+
+    public function employees()
+    {
+        return $this->hasOne(Employee::class,'user_id','id');
+    }
 }
