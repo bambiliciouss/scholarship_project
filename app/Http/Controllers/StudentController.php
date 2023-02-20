@@ -158,4 +158,8 @@ class StudentController extends Controller
  
     }
 
+    public function getSignin(){
+        return view('user.signin');
+    }
+
 }

@@ -39,6 +39,13 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{ route('user.logout') }}" class="nav-link">
+              <i class="nav-icon far fa-user"></i>
+              <p>Logout</p>
+            </a>
+          </li>
   
           <li class="nav-header">SETTINGS & SECURITY</li>
           <!-- User Menu -->

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +20,20 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return View::make('index');
    });
+
+
+Route::get('/logins', function () {
+    return View::make('login');
+   });
+
+
+
+
+Route::post('signin', [
+    'uses' => 'LoginController@postSignin',
+    'as' => 'user.signin',
+]);
+
 
 
 // STUDENT 
@@ -48,10 +62,16 @@ Route::get('/student/{id}/edit', [
 
 Route::put('/student/{id}', 'StudentController@update')->name('user.update');
 
+Route::get('login', [
+    'uses' => 'StudentController@getSignin',
+    'as' => 'user.signins',
+ ]);
+
+ 
 // EMPLOYEE
 Route::get('esignup', [
     'uses' => 'EmployeeController@getSignup',
-    'as' => 'employeee.signups',
+    'as' => 'employee.signups',
         ]);
 
 Route::post('/esignups', [
@@ -73,4 +93,14 @@ Route::get('/employee/{id}/edit', [
 
 Route::put('/employee/{id}', 'EmployeeController@update')->name('employee.update');
 
+Route::get('elogin', [
+    'uses' => 'EmployeeController@getSignin',
+    'as' => 'employee.signins',
+ ]);
 
+
+//LOGOUT
+Route::get('logout',[
+    'uses' => 'LoginController@logout',
+    'as' => 'user.logout',
+   ]); 

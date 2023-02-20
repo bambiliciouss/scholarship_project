@@ -69,8 +69,8 @@ class EmployeeController extends Controller
         $employee->save();
         Auth::login($user);
 
-        //return redirect()->route('employee.profile');
-        return Redirect::to('/home');
+        return redirect()->route('employee.profile');
+        //return Redirect::to('/home');
 
     }
 
@@ -125,6 +125,10 @@ class EmployeeController extends Controller
         //return Redirect::to('/employee')->with('success','Updated!');*/
           return redirect()->route('employee.profile');
  
+    }
+
+    public function getSignin(){
+        return view('employee.signin');
     }
 
 
