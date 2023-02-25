@@ -55,8 +55,6 @@ Route::post('signin', [
 
 
 
-
-
 // STUDENT 
 
 Route::get('signup', [
@@ -130,6 +128,29 @@ Route::group(['middleware' => 'role:employee'], function() {
         'uses' => 'EmployeeController@getEmployees',
         'as' => 'getEmployees'
     ]);
+
+    //SCHOLARSHIP DETAILS
+
+   Route::get('/scholarship', [
+    'uses' => 'ScholarshipController@create',
+    'as' => 'scholarship.create',
+        ]);
+
+    Route::post('/scholarship', [
+        'uses' => 'ScholarshipController@store',
+        'as' => 'scholarship.store',
+    ]);
+
+    Route::get('/scholarships', [
+        'uses' => 'ScholarshipController@getalltypes',
+        'as' => 'getalltypes'
+    ]);
+    Route::put('/scholarship/{id}', 'ScholarshipController@update')->name('scholarship.update');
+    Route::delete('/scholarship/delete/{id}','ScholarshipController@destroy')->name('scholarship.destroy');
+    Route::get('/scholarship/restore/{id}','ScholarshipController@restore')->name('scholarship.restore');
+
+
+    
 });
 
 //LOGOUT

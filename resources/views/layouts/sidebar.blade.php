@@ -49,6 +49,12 @@
                 <p>Employees</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('getalltypes') }}" class="nav-link">
+                <i class="nav-icon far fa-user"></i>
+                <p>Types of Scholarship</p>
+              </a>
+            </li>
     
             <li class="nav-header">ACCOUNT</li>
             <!-- User Menu -->
