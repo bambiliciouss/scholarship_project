@@ -29,7 +29,7 @@
                 <th>Place of Birth</th>
                 <th>Father's Name</th>
                 <th>Mother's Name</th>
-                <th>Delete</th>
+                <th>Actions</th>
         
 
               </tr>
@@ -52,13 +52,21 @@
                       <td>{{ $student->place_of_birth}}</td>
                       <td>{{ $student->father_name}}</td>
                       <td>{{ $student->mother_name}}</td>
-                      <td>
-                        <a href="#" class="badge badge-pill badge-primary">Activate</a>
-                        <a href="#" class="badge badge-pill badge-danger">Deactivate</a>
-                       
-                      
+
+                      <td align="center">
+                        @if(!$student->deleted_at)
+                        <a class="badge badge-pill badge-secondary">Activate</a> <br>
+                        {!! Form::open(array('route' => array('user.destroy', $student->student_id),'method'=>'DELETE')) !!}
+                        <button class="badge badge-pill badge-danger">Deactivate </button>
+                        {!! Form::close() !!}
+                        @else
+                        <a href="{{ route('user.restore',$student->student_id) }}"class="badge badge-pill badge-warning" >Activate</a> <br>
+                        <a class="badge badge-pill badge-secondary">Deactivate</a>
+                        @endif
                       </td>
-                        
+                     
+
+                     
                     </tr>
                   @endforeach
                 </tbody>

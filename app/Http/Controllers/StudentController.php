@@ -174,10 +174,29 @@ class StudentController extends Controller
     public function getStudents()
     {
         //$pets = Pet::with('customer')->get();
-       $students = StudentInfo::with('user')->get();
+       $students = StudentInfo::with('user')->withTrashed()->get();
         //dd($customers);
         return view('user.users',compact('students'));
     }
+
+    public function destroy($student_id)
+    {
+
+        $student = Studentinfo::find($student_id);
+        $student->delete();
+
+       return Redirect::to('/students')->with('success','Student Account Deactivated!');
+    }
+
+
+    public function restore($student_id) 
+    {
+       
+        Studentinfo::withTrashed()->where('student_id',$student_id)->restore();
+      
+       return Redirect::to('/students')->with('success','Student Account Activated!');
+    }
+
 
 
 }

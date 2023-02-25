@@ -41,15 +41,15 @@ Route::post('signin', [
 
 //DATATABLES
 
-Route::get('/students', [
-    'uses' => 'StudentController@getStudents',
-    'as' => 'getStudents'
-  ]);
+// Route::get('/students', [
+//     'uses' => 'StudentController@getStudents',
+//     'as' => 'getStudents'
+//   ]);
 
-  Route::get('/employees', [
-    'uses' => 'EmployeeController@getEmployees',
-    'as' => 'getEmployees'
-  ]);
+//   Route::get('/employees', [
+//     'uses' => 'EmployeeController@getEmployees',
+//     'as' => 'getEmployees'
+//   ]);
 
 
 
@@ -69,21 +69,24 @@ Route::post('/signups', [
     'as' => 'user.signup',
 ]);
 
-
-Route::get('profile', [
-    'uses' => 'StudentController@getProfile',
-    'as' => 'user.profile',
-]);
-
-
-Route::get('/student/{id}/edit', [
-    'uses' => 'StudentController@edit',
-    'as' => 'user.edit',
-]);
-
-Route::put('/student/{id}', 'StudentController@update')->name('user.update');
+Route::group(['middleware' => 'role:student'], function() {
+    Route::get('profile', [
+        'uses' => 'StudentController@getProfile',
+        'as' => 'user.profile',
+    ]);
 
 
+    Route::get('/student/{id}/edit', [
+        'uses' => 'StudentController@edit',
+        'as' => 'user.edit',
+    ]);
+
+    Route::put('/student/{id}', 'StudentController@update')->name('user.update');
+
+    Route::delete('/student/delete/{id}','StudentController@destroy')->name('user.destroy');
+    Route::get('/student/restore/{id}','StudentController@restore')->name('user.restore');
+
+});
 
  
 // EMPLOYEE
@@ -97,25 +100,37 @@ Route::post('/esignups', [
     'as' => 'employee.signup',
 ]);
 
-
-Route::get('eprofile', [
-    'uses' => 'EmployeeController@getProfile',
-    'as' => 'employee.profile',
-]);
-
-
-Route::get('/employee/{id}/edit', [
-    'uses' => 'EmployeeController@edit',
-    'as' => 'employee.edit',
-]);
-
-Route::put('/employee/{id}', 'EmployeeController@update')->name('employee.update');
+Route::group(['middleware' => 'role:employee'], function() {
+    Route::get('eprofile', [
+        'uses' => 'EmployeeController@getProfile',
+        'as' => 'employee.profile',
+    ]);
 
 
+    Route::get('/employee/{id}/edit', [
+        'uses' => 'EmployeeController@edit',
+        'as' => 'employee.edit',
+    ]);
 
-Route::delete('/employee/delete/{id}','EmployeeController@destroy')->name('employee.destroy');
-Route::get('/employee/restore/{id}','EmployeeController@restore')->name('employee.restore');
+    Route::put('/employee/{id}', 'EmployeeController@update')->name('employee.update');
 
+
+
+    Route::delete('/employee/delete/{id}','EmployeeController@destroy')->name('employee.destroy');
+    Route::get('/employee/restore/{id}','EmployeeController@restore')->name('employee.restore');
+
+    //DATATABLES
+
+    Route::get('/students', [
+        'uses' => 'StudentController@getStudents',
+        'as' => 'getStudents'
+    ]);
+
+    Route::get('/employees', [
+        'uses' => 'EmployeeController@getEmployees',
+        'as' => 'getEmployees'
+    ]);
+});
 
 //LOGOUT
 Route::get('logout',[

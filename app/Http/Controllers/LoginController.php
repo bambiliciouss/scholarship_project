@@ -23,10 +23,10 @@ class LoginController extends Controller
                     $student = StudentInfo::where('user_id',$stu)->get();
                     if($student->isEmpty()){
 
-                        return redirect()->route('user.logout')->with('success','It looks like your account has been disabled. Please contact our team for recovery of account');;
+                        return Redirect::to('/logins')->with('error','Account is Deactivated!');
                     }
                     else{
-                         return redirect()->route('user.profile');
+                         return redirect()->route('user.profile')->with('success','Login Successfully');
                     }
                 }
 

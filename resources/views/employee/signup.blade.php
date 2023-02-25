@@ -34,13 +34,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="lname">Last Name</label>
-                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name">
+                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="fname">First Name</label>
-                                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name">
+                                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name" required>
                                     </div>
                                 </div>
                                 
@@ -50,20 +50,20 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="addressline">Addressline</label>
-                                        <input type="text" class="form-control" id="addressline" name="addressline" placeholder="Enter addressline">
+                                        <input type="text" class="form-control" id="addressline" name="addressline" placeholder="Enter addressline" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="town">Town</label>
-                                        <input type="text" class="form-control" id="town" name="town" placeholder="Enter Town">
+                                        <input type="text" class="form-control" id="town" name="town" placeholder="Enter Town" required>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="zipcode">Zipcode</label>
-                                        <input type="number" class="form-control" id="zipcode" name="zipcode" placeholder="Enter age">
+                                        <input type="number" class="form-control" id="zipcode" name="zipcode" placeholder="Enter age" required>
                                     </div>
                                 </div>
                             </div>
@@ -74,14 +74,14 @@
                                 <div class="col-sm-5">
                                     <div class="form-group">
                                         <label for="phone">Phone</label>
-                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone no.">
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone no." required>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <label class="form-control-label">Employee Photo</label>
-                                         <input type="file" class="form-control" id="image" name="image" >
+                                         <input type="file" class="form-control" id="image" name="image" required>
                                          
                                     </div>
                                 </div>
@@ -94,13 +94,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                     </div>
                                 </div>
                             </div>

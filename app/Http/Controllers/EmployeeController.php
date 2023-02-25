@@ -142,7 +142,7 @@ class EmployeeController extends Controller
         $Employee = Employee::find($employee_id);
         $Employee->delete();
 
-       return Redirect::to('/employees')->with('success','Employee Deleted!');
+       return Redirect::to('/employees')->with('success','Employee Deactivated!');
     }
 
 
@@ -151,7 +151,7 @@ class EmployeeController extends Controller
        
         Employee::withTrashed()->where('employee_id',$employee_id)->restore();
       
-       return Redirect::to('/employees')->with('success','Employee Restored!');
+       return Redirect::to('/employees')->with('success','Employee Activated!');
     }
 
 

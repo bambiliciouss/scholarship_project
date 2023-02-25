@@ -29,8 +29,8 @@
                 <th>Addressline</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Activate</th>
-                <th>Deactivate</th>
+                <th>Actions</th>
+            
               
         
 
@@ -53,22 +53,18 @@
 
                       <td align="center">
                         @if(!$employee->deleted_at)
-                        <a class="badge badge-pill badge-secondary">Activate</a>
+                        <a class="badge badge-pill badge-secondary">Activate</a> <br>
+                        {!! Form::open(array('route' => array('employee.destroy', $employee->employee_id),'method'=>'DELETE')) !!}
+                        <button class="badge badge-pill badge-danger">Deactivate </button>
+                        {!! Form::close() !!}
                         @else
-                          <a href="{{ route('employee.restore',$employee->employee_id) }}"class="badge badge-pill badge-warning" >Activate</a>
+                          <a href="{{ route('employee.restore',$employee->employee_id) }}"class="badge badge-pill badge-warning" >Activate</a> <br>
+                          <a class="badge badge-pill badge-secondary">Deactivate</a>
                         @endif
                       </td>
                      
 
-                      <td align="center">
-                        @if($employee->deleted_at)
-                        <a class="badge badge-pill badge-secondary">Deactivate</a>
-                        @else
-                        {!! Form::open(array('route' => array('employee.destroy', $employee->employee_id),'method'=>'DELETE')) !!}
-                        <button class="badge badge-pill badge-danger">Deactivate </button>
-                        {!! Form::close() !!}
-                        @endif
-                      </td>
+                      
                         
                     </tr>
                  
