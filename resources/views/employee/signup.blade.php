@@ -1,6 +1,12 @@
-@extends('layouts.master')
-@section('title', ' Registration')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>@yield('title')</title>
+        @include('layouts.head')
+    </head>
+<body>
 
 <section class="content">
     <br>
@@ -113,5 +119,7 @@
     </div><!-- /.container-fluid -->
 </section>
 
+@include('layouts.foot')
+</body>
 
-@endsection
+</html>

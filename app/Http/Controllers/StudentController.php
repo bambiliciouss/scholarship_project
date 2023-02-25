@@ -10,6 +10,9 @@ use DB;
 use View;
 use Redirect;
 
+use Yajra\DataTables\Html\Builder;
+use App\DataTables\StudentsDataTable;
+
 
 class StudentController extends Controller
 {
@@ -158,8 +161,23 @@ class StudentController extends Controller
  
     }
 
-    public function getSignin(){
-        return view('user.signin');
+
+
+    // public function getStudents(StudentsDataTable $dataTable)
+    // {
+    //     //$pets = Pet::with('customer')->get();
+    //    $students = StudentInfo::with('user')->get();
+    //     //dd($customers);
+    //     return $dataTable->render('user.users', compact('students'));
+    // }
+
+    public function getStudents()
+    {
+        //$pets = Pet::with('customer')->get();
+       $students = StudentInfo::with('user')->get();
+        //dd($customers);
+        return view('user.users',compact('students'));
     }
+
 
 }

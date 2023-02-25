@@ -127,9 +127,34 @@ class EmployeeController extends Controller
  
     }
 
-    public function getSignin(){
-        return view('employee.signin');
+
+    public function getEmployees()
+    {
+       
+       $employees = Employee::with('user')->withTrashed()->get();
+
+        return view('employee.employees',compact('employees'));
     }
+
+    public function destroy($employee_id)
+    {
+
+        $Employee = Employee::find($employee_id);
+        $Employee->delete();
+
+       return Redirect::to('/employees')->with('success','Employee Deleted!');
+    }
+
+
+    public function restore($employee_id) 
+    {
+       
+        Employee::withTrashed()->where('employee_id',$employee_id)->restore();
+      
+       return Redirect::to('/employees')->with('success','Employee Restored!');
+    }
+
+
 
 
 

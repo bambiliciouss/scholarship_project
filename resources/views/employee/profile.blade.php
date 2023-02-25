@@ -4,6 +4,8 @@
 <section class="content">
         <div class="container-fluid">
           <br><br>
+
+    
       @foreach($employee->chunk(4) as $employees)
       @foreach($employees as $empdisplay )
       
@@ -11,6 +13,12 @@
             <div class="col-md-3"></div>
 
             <div class="col-md-6">
+              @if ($message = Session::get('success'))
+                <div class="alert alert-light alert-block">
+                  <button type="button" class="close" data-dismiss="alert">×</button> 
+                  <strong>{{ $message }}</strong>
+                </div>
+              @endif
               <div class="card card-primary">
                 <div class="card-header">
                   <h3 class="card-title">Employee Profile</h3>

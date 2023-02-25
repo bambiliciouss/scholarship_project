@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+
 use Auth;
+use Redirect;
+
 use App\Models\User;
 use App\Models\StudentInfo;
 use App\Models\Employee;
@@ -20,7 +23,7 @@ class LoginController extends Controller
                     $student = StudentInfo::where('user_id',$stu)->get();
                     if($student->isEmpty()){
 
-                        return redirect()->route('user.logout');
+                        return redirect()->route('user.logout')->with('success','It looks like your account has been disabled. Please contact our team for recovery of account');;
                     }
                     else{
                          return redirect()->route('user.profile');
@@ -44,10 +47,12 @@ class LoginController extends Controller
                     $employee = Employee::where('user_id',$emp)->get();
                     if($employee->isEmpty()){
 
-                        return redirect()->route('user.logout');
+                        //return redirect()->route('user.logout')->with('success','Employee Restored!');
+                       return Redirect::to('/logins')->with('error','Account is Deactivated!');
                     }
+
                     else{
-                         return redirect()->route('employee.profile');
+                         return redirect()->route('employee.profile')->with('success','Login Successfully');
                     }
                 }
 
@@ -66,15 +71,18 @@ class LoginController extends Controller
                 // }
             }
 
-            // else{
-            //     return redirect()->route('user.signins')
-            //     ->with('error','Email-Address And Password Are Wrong.');
-            // }
+            else{
+                return Redirect::to('/logins')->with('error','Account is not Registered');
+            }
+
+
         }
+   
+
 
 
         public function logout(){
             Auth::logout();
-            return redirect()->guest('/logins');
+            return redirect()->guest('/logins')->with('success','Logout Successfully');
         }
 }

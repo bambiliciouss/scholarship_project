@@ -35,6 +35,27 @@ Route::post('signin', [
 ]);
 
 
+// Route::get('/students', function () {
+//     return View::make('user.users');
+//    });
+
+//DATATABLES
+
+Route::get('/students', [
+    'uses' => 'StudentController@getStudents',
+    'as' => 'getStudents'
+  ]);
+
+  Route::get('/employees', [
+    'uses' => 'EmployeeController@getEmployees',
+    'as' => 'getEmployees'
+  ]);
+
+
+
+
+
+
 
 // STUDENT 
 
@@ -62,10 +83,7 @@ Route::get('/student/{id}/edit', [
 
 Route::put('/student/{id}', 'StudentController@update')->name('user.update');
 
-Route::get('login', [
-    'uses' => 'StudentController@getSignin',
-    'as' => 'user.signins',
- ]);
+
 
  
 // EMPLOYEE
@@ -93,10 +111,10 @@ Route::get('/employee/{id}/edit', [
 
 Route::put('/employee/{id}', 'EmployeeController@update')->name('employee.update');
 
-Route::get('elogin', [
-    'uses' => 'EmployeeController@getSignin',
-    'as' => 'employee.signins',
- ]);
+
+
+Route::delete('/employee/delete/{id}','EmployeeController@destroy')->name('employee.destroy');
+Route::get('/employee/restore/{id}','EmployeeController@restore')->name('employee.restore');
 
 
 //LOGOUT
