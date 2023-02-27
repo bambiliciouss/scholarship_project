@@ -45,9 +45,16 @@
                       <td>{{ $scholar->scholarship_id}}</td>
                       <td>{{ $scholar->sname}}</td>
                       <td>{{ $scholar->description}}</td>
-                      <td><a href="#editScholarship{{$scholar->scholarship_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
-                        @include('scholarship.edit')   
-                    </td>
+                      
+                    
+                      <td align="center">
+                        @if (!$scholar->deleted_at)
+                        <a href="#editScholarship{{$scholar->scholarship_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
+                        @include('scholarship.edit')  
+                        @else
+                        <a class="badge badge-pill badge-secondary">Edit</a> <br>
+                        @endif
+                      </td>
 
 
                       <td align="center">

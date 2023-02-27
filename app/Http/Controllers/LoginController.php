@@ -26,7 +26,7 @@ class LoginController extends Controller
                         return Redirect::to('/logins')->with('error','Account is Deactivated!');
                     }
                     else{
-                         return redirect()->route('user.profile')->with('success','Login Successfully');
+                         return redirect()->route('scholarship.index')->with('success','Login Successfully');
                     }
                 }
 

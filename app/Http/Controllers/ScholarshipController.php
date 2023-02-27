@@ -70,4 +70,10 @@ class ScholarshipController extends Controller
     }
 
 
+    public function getScholars(){
+        $scho = Scholarshipinfo::all();
+        return view('scholarship.index',compact('scho'));
+     }
+
+
 }

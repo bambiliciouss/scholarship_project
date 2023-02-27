@@ -27,6 +27,10 @@ Route::get('/logins', function () {
    });
 
 
+// Route::get('/scholarshipdashboard', function () {
+//     return View::make('scholarship.index');
+//    });
+
 
 
 Route::post('signin', [
@@ -78,11 +82,15 @@ Route::group(['middleware' => 'role:student'], function() {
         'uses' => 'StudentController@edit',
         'as' => 'user.edit',
     ]);
-
+    
     Route::put('/student/{id}', 'StudentController@update')->name('user.update');
 
-    Route::delete('/student/delete/{id}','StudentController@destroy')->name('user.destroy');
-    Route::get('/student/restore/{id}','StudentController@restore')->name('user.restore');
+    Route::get('/scholarshipdashboard', [
+        'uses' => 'ScholarshipController@getScholars',
+         'as' => 'scholarship.index'
+      ]);
+    
+
 
 });
 
@@ -116,6 +124,9 @@ Route::group(['middleware' => 'role:employee'], function() {
 
     Route::delete('/employee/delete/{id}','EmployeeController@destroy')->name('employee.destroy');
     Route::get('/employee/restore/{id}','EmployeeController@restore')->name('employee.restore');
+
+    Route::delete('/student/delete/{id}','StudentController@destroy')->name('user.destroy');
+    Route::get('/student/restore/{id}','StudentController@restore')->name('user.restore');
 
     //DATATABLES
 
@@ -158,3 +169,5 @@ Route::get('logout',[
     'uses' => 'LoginController@logout',
     'as' => 'user.logout',
    ]); 
+
+
