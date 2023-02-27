@@ -10,6 +10,7 @@ use View;
 use Redirect;
 use App\Models\User;
 use App\Models\Employee;
+use Illuminate\Support\Facades\File;
 
 class EmployeeController extends Controller
 {
@@ -96,7 +97,7 @@ class EmployeeController extends Controller
         $employee->phone = $request->phone;
 
         if($file = $request->hasFile('image')) {
-            $destination ='/images'.$student->img_path;
+            $destination ='/images'.$employee->img_path;
             if(File::exists($destination))
             {
                 File::delete($destination);

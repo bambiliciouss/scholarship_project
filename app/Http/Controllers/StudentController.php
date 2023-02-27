@@ -11,7 +11,8 @@ use View;
 use Redirect;
 
 use Yajra\DataTables\Html\Builder;
-use App\DataTables\StudentsDataTable;
+use Illuminate\Support\Facades\File;
+
 
 
 class StudentController extends Controller
@@ -144,7 +145,7 @@ class StudentController extends Controller
             $input['image'] = $fileName;
             
             $file->move($destinationPath,$fileName);
-            $employee->img_path = $fileName;
+            $student->img_path = $fileName;
         }
 
         //dd($student);
