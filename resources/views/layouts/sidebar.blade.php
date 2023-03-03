@@ -55,6 +55,12 @@
                 <p>Types of Scholarship</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('getallyears') }}" class="nav-link">
+                <i class="nav-icon far fa-user"></i>
+                <p>Academic Year</p>
+              </a>
+            </li>
     
             <li class="nav-header">ACCOUNT</li>
             <!-- User Menu -->
