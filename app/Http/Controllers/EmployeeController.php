@@ -124,7 +124,7 @@ class EmployeeController extends Controller
         $user->save();
 
         //return Redirect::to('/employee')->with('success','Updated!');*/
-          return redirect()->route('employee.profile');
+          return redirect()->route('employee.profile')->with('success','Profile Updated');
  
     }
 

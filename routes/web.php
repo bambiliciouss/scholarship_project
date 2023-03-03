@@ -160,6 +160,28 @@ Route::group(['middleware' => 'role:employee'], function() {
     Route::delete('/scholarship/delete/{id}','ScholarshipController@destroy')->name('scholarship.destroy');
     Route::get('/scholarship/restore/{id}','ScholarshipController@restore')->name('scholarship.restore');
 
+    //ACADEMIC SCHOOL YEAR
+
+    Route::get('/academicyear', [
+        'uses' => 'AcademicYearController@create',
+        'as' => 'academicyear.create',
+            ]);
+    
+        Route::post('/academicyear', [
+            'uses' => 'AcademicYearController@store',
+            'as' => 'academicyear.store',
+        ]);
+    
+        Route::get('/academicyears', [
+            'uses' => 'AcademicYearController@getallyears',
+            'as' => 'getallyears'
+        ]);
+
+        Route::put('/academicyear/{id}', 'AcademicYearController@update')->name('academicyear.update');
+        Route::delete('/academicyear/delete/{id}','AcademicYearController@destroy')->name('academicyear.destroy');
+        Route::get('/academicyear/restore/{id}','AcademicYearController@restore')->name('academicyear.restore');
+    
+
 
     
 });
