@@ -15,4 +15,9 @@ class AcademicYear extends Model
     protected $primaryKey = 'acadyears_id';
     protected $fillable = ['description'];
 
+    public function appli()
+    {
+        return $this->hasMany(ApplicationPeriod::class,'acadyears_id','acadyears_id');
+    }
+
 }

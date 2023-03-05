@@ -36,31 +36,45 @@
             </li>
             <li class="nav-item">
               <a href="{{ route('getStudents') }}" class="nav-link">
-                <i class="nav-icon far fa-user"></i>
+                <i class="nav-icon fas fa-users"></i>
+               
                 <p>
                   Students
                 </p>
               </a>
             </li>
 
+            
+
             <li class="nav-item">
               <a href="{{ route('getEmployees') }}" class="nav-link">
-                <i class="nav-icon far fa-user"></i>
+                <i class="nav-icon fas fa-users"></i>
                 <p>Employees</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('getalltypes') }}" class="nav-link">
-                <i class="nav-icon far fa-user"></i>
+                <i class="nav-icon far fa-folder-open"></i>
+               
                 <p>Types of Scholarship</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('getallyears') }}" class="nav-link">
-                <i class="nav-icon far fa-user"></i>
+                <i class="nav-icon fas fa-calendar"></i>
+             
+            
                 <p>Academic Year</p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('getallappliperiods') }}" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>Application Period</p>
+              </a>
+            </li>
+
     
             <li class="nav-header">ACCOUNT</li>
             <!-- User Menu -->

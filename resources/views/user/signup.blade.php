@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label for="Name">Barangay</label>
 
-                                        <select id="bb" class="form-control "onchange="updateTextbox()"  >
+                                        <select id="barangay" class="form-control "name="barangay"  >
                                             <option value="0" selected="selected" disabled>--Select your Barangay--</option>
                                             <option value="Bagong Tanyag">Bagong Tanyag</option>
                                             <option value="Bagumbayan">Bagumbayan</option>
@@ -96,7 +96,7 @@
                                            
 
                                           </select>
-                                        <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter barangay" hidden>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -111,12 +111,12 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select id="gg" class="form-control "onchange="selectGender()"  >
+                                        <select id="gender" class="form-control "name="gender" >
                                             <option value="0" selected="selected" disabled>--Select your Gender--</option>
                                             <option value="Female">Female</option>
                                             <option value="Male">Male</option>
                                           </select>
-                                        <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender" hidden>
+                                        {{-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender" hidden> --}}
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
@@ -192,26 +192,6 @@
     </div><!-- /.container-fluid -->
 </section>
 
-<script>
-  function updateTextbox() {
-        const dropdown = document.getElementById('bb');
-        const selectedOption = dropdown.options[dropdown.selectedIndex];
-        const selectedValue = selectedOption.value;
-
-        const textbox = document.getElementById('barangay');
-        textbox.value = selectedValue;
-      }
-
-      function selectGender() {
-        const dropdown = document.getElementById('gg');
-        const selectedOption = dropdown.options[dropdown.selectedIndex];
-        const selectedValue = selectedOption.value;
-
-        const textbox = document.getElementById('gender');
-        textbox.value = selectedValue;
-      }
-
- </script>
 
 
 @include('layouts.foot')

@@ -12,9 +12,9 @@ use Redirect;
 
 class AcademicYearController extends Controller
 {
-    public function create(){
-        return view('academicyear.create');
-  }
+//     public function create(){
+//         return view('academicyear.create');
+//   }
 
   public function store(Request $request){
         

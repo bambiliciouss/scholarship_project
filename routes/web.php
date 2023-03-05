@@ -180,6 +180,29 @@ Route::group(['middleware' => 'role:employee'], function() {
         Route::put('/academicyear/{id}', 'AcademicYearController@update')->name('academicyear.update');
         Route::delete('/academicyear/delete/{id}','AcademicYearController@destroy')->name('academicyear.destroy');
         Route::get('/academicyear/restore/{id}','AcademicYearController@restore')->name('academicyear.restore');
+
+
+
+
+        //APPLICATION PERIOD
+
+        Route::get('/applicationperiods', [
+            'uses' => 'ApplicationPeriodController@getallappliperiods',
+            'as' => 'getallappliperiods'
+        ]);
+
+        Route::post('/applicationperiod', [
+            'uses' => 'ApplicationPeriodController@store',
+            'as' => 'applicationperiod.store',
+        ]);
+
+        Route::put('/applicationperiod/{id}', 'ApplicationPeriodController@update')->name('applicationperiod.update');
+        Route::delete('/applicationperiod/delete/{id}','ApplicationPeriodController@destroy')->name('applicationperiod.destroy');
+        Route::get('/applicationperiod/restore/{id}','ApplicationPeriodController@restore')->name('applicationperiod.restore');
+
+
+
+    
     
 
 
