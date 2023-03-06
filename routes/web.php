@@ -55,7 +55,7 @@ Route::post('signin', [
 //     'as' => 'getEmployees'
 //   ]);
 
-
+//DOCUMENT SAMPLE
 Route::get('docudocu', [
     'uses' => 'DocumentController@showall',
     'as' => 'document.showall',
@@ -81,6 +81,19 @@ Route::post('/docs', [
     'uses' => 'DocumentController@store',
     'as' => 'document.store',
 ]);
+
+//TRANSACTION
+
+Route::get('transaction', [
+    'uses' => 'TransactionController@getcreate',
+    'as' => 'transaction.create',
+        ]);
+
+
+ Route::post('/transactions', [
+            'uses' => 'TransactionController@store',
+            'as' => 'transaction.store',
+        ]);
 
 
 // STUDENT 

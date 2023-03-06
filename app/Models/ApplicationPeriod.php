@@ -20,4 +20,10 @@ class ApplicationPeriod extends Model
         return $this->belongsTo(AcademicYear::class,'acadyears_id');
     }
 
+    public function transaction() 
+    {
+        return $this->hasMany(Transaction::class,'applicationPeriod_id');
+    }
+
+
 }

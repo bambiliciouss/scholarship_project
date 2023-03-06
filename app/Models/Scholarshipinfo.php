@@ -16,5 +16,11 @@ class Scholarshipinfo extends Model
     protected $fillable = ['sname','description'];
 
 
+    public function transaction() 
+    {
+        return $this->hasMany(Transaction::class,'scholarship_id');
+    }
+
+
 
 }
