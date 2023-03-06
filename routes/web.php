@@ -56,7 +56,31 @@ Route::post('signin', [
 //   ]);
 
 
+Route::get('docudocu', [
+    'uses' => 'DocumentController@showall',
+    'as' => 'document.showall',
+        ]);
 
+        Route::get('viewgrades/{id}', [
+            'uses' => 'DocumentController@viewgrades',
+            'as' => 'document.viewgrades',
+                ]);
+
+                Route::get('viewcor/{id}', [
+                    'uses' => 'DocumentController@viewcor',
+                    'as' => 'document.viewcor',
+                        ]);              
+               
+
+Route::get('docu', [
+    'uses' => 'DocumentController@getcreate',
+    'as' => 'document.create',
+        ]);
+
+Route::post('/docs', [
+    'uses' => 'DocumentController@store',
+    'as' => 'document.store',
+]);
 
 
 // STUDENT 
@@ -199,11 +223,6 @@ Route::group(['middleware' => 'role:employee'], function() {
         Route::put('/applicationperiod/{id}', 'ApplicationPeriodController@update')->name('applicationperiod.update');
         Route::delete('/applicationperiod/delete/{id}','ApplicationPeriodController@destroy')->name('applicationperiod.destroy');
         Route::get('/applicationperiod/restore/{id}','ApplicationPeriodController@restore')->name('applicationperiod.restore');
-
-
-
-    
-    
 
 
     
