@@ -95,6 +95,63 @@ Route::get('transaction', [
             'as' => 'transaction.store',
         ]);
 
+Route::get('applications', [
+            'uses' => 'TransactionController@getApplications',
+            'as' => 'transaction.getApplications',
+                ]);
+                
+Route::get('viewcor/{id}', [
+        'uses' => 'TransactionController@viewcor',
+        'as' => 'transaction.viewcor',
+    ]);
+    
+Route::get('viewgrades/{id}', [
+        'uses' => 'TransactionController@viewgrades',
+        'as' => 'transaction.viewgrades',
+    ]);
+
+Route::get('viewjuniorrecords/{id}', [
+        'uses' => 'TransactionController@viewjuniorrecords',
+        'as' => 'transaction.viewjuniorrecords',
+    ]); 
+
+Route::get('viewseniorrecords/{id}', [
+        'uses' => 'TransactionController@viewseniorrecords',
+        'as' => 'transaction.viewseniorrecords',
+    ]);  
+
+Route::get('viewvalidID/{id}', [
+        'uses' => 'TransactionController@viewvalidID',
+        'as' => 'transaction.viewvalidID',
+    ]);  
+
+Route::get('viewform137/{id}', [
+        'uses' => 'TransactionController@viewform137',
+        'as' => 'transaction.viewform137',
+    ]);  
+
+Route::get('viewcerthonors/{id}', [
+        'uses' => 'TransactionController@viewcerthonors',
+        'as' => 'transaction.viewcerthonors',
+    ]);
+    
+    Route::get('viewparentvoters/{id}', [
+        'uses' => 'TransactionController@viewparentvoters',
+        'as' => 'transaction.viewparentvoters',
+    ]);
+
+    Route::get('viewapplicantvoters/{id}', [
+        'uses' => 'TransactionController@viewapplicantvoters',
+        'as' => 'transaction.viewapplicantvoters',
+    ]);
+    
+
+    Route::get('viewbirthcert/{id}', [
+        'uses' => 'TransactionController@viewbirthcert',
+        'as' => 'transaction.viewbirthcert',
+    ]);
+
+
 
 // STUDENT 
 

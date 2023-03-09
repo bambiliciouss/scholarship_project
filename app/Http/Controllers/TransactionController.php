@@ -81,7 +81,7 @@ class TransactionController extends Controller
             if($file = $request->hasFile('docs_senior_record')) {
                 $file = $request->file('docs_senior_record') ;
                 $fileName = date('M,d,Y').'_'.$file->getClientOriginalName();
-                $destinationPath = public_path().'/JuniorRecords';
+                $destinationPath = public_path().'/SeniorRecords';
                 $input['senior_record'] = $fileName;
                 $file->move($destinationPath,$fileName);
             }
@@ -183,4 +183,67 @@ class TransactionController extends Controller
 
        return Redirect::to('/signup');
    }
+
+
+   public function getApplications()
+    {
+        //$pets = Pet::with('customer')->get();
+       $appli = Transaction::with('students', 'scholarship', 'application_period')->withTrashed()->get();
+        //dd($customers);
+        return view('transaction.transactions',compact('appli'));
+    }
+
+    public function viewcor($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewcor', compact('dataview'));
+    }
+
+    public function viewgrades($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewgrades', compact('dataview'));
+    }
+
+    public function viewjuniorrecords($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewjuniorrecords', compact('dataview'));
+    }
+
+    public function viewseniorrecords($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewseniorrecords', compact('dataview'));
+    }
+
+    
+
+    public function viewvalidID($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewvalidID', compact('dataview'));
+    }
+
+    public function viewform137($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewform137', compact('dataview'));
+    }
+
+    public function viewcerthonors($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewcerthonors', compact('dataview'));
+    }
+
+    public function viewparentvoters($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewparentvoters', compact('dataview'));
+    }
+
+    public function viewapplicantvoters($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewapplicantvoters', compact('dataview'));
+    }
+
+    public function viewbirthcert($id){
+        $dataview = Transaction::find($id);
+        return view ('transaction.viewbirthcert', compact('dataview'));
+    }
+
+
 }
