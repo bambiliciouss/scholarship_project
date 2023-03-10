@@ -42,6 +42,7 @@
                 <th>Parents Voters</th>
                 <th>Applicant Voters</th>
                 <th>Birth Cert</th>
+                <th>Status</th>
                 {{-- <th>Edit</th>
                 <th>Actions</th> --}}
         
@@ -54,12 +55,12 @@
                   @foreach ( $appli as $applis )
                     <tr>
                       <td>{{ $applis->application_transaction_id}}</td>
-                      <td>{{ $applis->students->fname}} {{ $applis->students->lname}}</td>
+                      <td>{{ $applis->fname}} {{ $applis->lname}}</td>
                       <td>{{ $applis->school_name}}</td>
                       <td>{{ $applis->year_level}}</td>
                       <td>{{ $applis->application_status}}</td>
-                      <td>{{ $applis->application_period->semester}} </td>
-                      <td>{{ $applis->scholarship->sname}} </td>
+                      <td>{{ $applis->syear_semester}} </td>
+                      <td>{{ $applis->scho_name}} </td>
                       <td><a href="{{ url('/viewcor', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewgrades', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewjuniorrecords', $applis->application_transaction_id) }}">View</a> </td>
@@ -70,6 +71,7 @@
                       <td><a href="{{ url('/viewparentvoters', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewapplicantvoters', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewbirthcert', $applis->application_transaction_id) }}">View</a> </td>
+                      <td>{{ $applis->status}}</td>
 
 
                       {{-- <td>{{ $acadyear->description}}</td>

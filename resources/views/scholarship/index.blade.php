@@ -2,6 +2,19 @@
 @section('title', ' LANI Scholarship')
 @section('content')
 <div class="content">
+  @if ($message = Session::get('error'))
+<div class="alert alert-danger alert-block">
+  <button type="button" class="close" data-dismiss="alert">×</button> 
+  <strong>{{ $message }}</strong>
+</div>
+@endif
+
+@if ($message = Session::get('success'))
+<div class="alert alert-light alert-block">
+  <button type="button" class="close" data-dismiss="alert">×</button> 
+  <strong>{{ $message }}</strong>
+</div>
+@endif
   <br><br>
   @foreach($scho->chunk(4) as $schos)
   <div class="container">

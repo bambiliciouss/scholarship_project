@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Studentinfo;
+use App\Models\ApplicationPeriod;
 use Auth;
 use DB;
 use View;
@@ -13,10 +14,35 @@ use Redirect;
 class TransactionController extends Controller
 {
     public function getcreate(){
-        return view('transaction.create');
+ 
+        $appliperiod = DB::table('application_periods')
+                    ->join('academic_years', 'application_periods.acadyears_id', '=', 'academic_years.acadyears_id')
+                    ->select(DB::raw("CONCAT(academic_years.description, ' - ', application_periods.semester) AS full_description"), 'application_periods.applicationPeriod_id')
+                    ->pluck('full_description', 'application_periods.applicationPeriod_id');
+          
+                   // dd($categories);
+          return view('transaction.create',  compact('appliperiod'));
     }
 
     public function store(Request $request){
+
+        $id = $request->school_year;
+        // dd($id);
+        $appliperiod = ApplicationPeriod::find($id);
+        if ($appliperiod->end_application < now()) {
+            return redirect()->route('scholarship.index')->with('error','Application is Already Closed');
+        } 
+        elseif($appliperiod->start_application > now()){
+            return redirect()->route('scholarship.index')->with('error','Application is Not Yet Open');
+
+        }
+        
+        
+        else {
+            // Transaction is still valid
+        
+
+
        
         try {
             DB::beginTransaction();
@@ -32,8 +58,9 @@ class TransactionController extends Controller
             $docs->school_name = $request->school_name;
             $docs->year_level = $request->year_level;
             $docs->application_status = $request->application_status;
-            $docs->applicationPeriod_id = 1;
+            $docs->applicationPeriod_id =$request->school_year;
             $docs->scholarship_id = $request->scholarship_id;
+            $docs->status = "Processing";
 
 
             $input = $request->enrollment_form;
@@ -181,14 +208,24 @@ class TransactionController extends Controller
 
         DB::commit();
 
-       return Redirect::to('/scholarshipdashboard');
+       return Redirect::to('/scholarshipdashboard')->with('success','Application is submitted');
+    }
    }
 
 
    public function getApplications()
     {
         //$pets = Pet::with('customer')->get();
-       $appli = Transaction::with('students', 'scholarship', 'application_period')->withTrashed()->get();
+    //    $appli = Transaction::with('students', 'scholarship', 'application_period')->withTrashed()->get();
+       $appli = DB::table('application_transactions')
+       ->join('studentinfo', 'application_transactions.student_id', '=', 'studentinfo.student_id')
+       ->join('scholarshipinfo', 'application_transactions.scholarship_id', '=', 'scholarshipinfo.scholarship_id')
+       ->join('application_periods', 'application_transactions.applicationPeriod_id', '=', 'application_periods.applicationPeriod_id')
+       ->join('academic_years', 'application_periods.acadyears_id', '=', 'academic_years.acadyears_id')
+       ->select('application_transactions.*', 'studentinfo.fname as fname','studentinfo.lname as lname',DB::raw("CONCAT(academic_years.description, ' - ', application_periods.semester) AS syear_semester"), 'scholarshipinfo.sname as scho_name'  )
+
+
+       ->get();
         //dd($customers);
         return view('transaction.transactions',compact('appli'));
     }

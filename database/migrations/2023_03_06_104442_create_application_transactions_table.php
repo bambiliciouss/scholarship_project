@@ -34,6 +34,7 @@ return new class extends Migration
             $table->text('voterscert_parent')->default('null.pdf');
             $table->text('votercert_applicant')->default('null.pdf');
             $table->text('birthcert')->default('null.pdf');
+            $table->text('status')->default('processing');
             $table->timestamps();
             $table->softDeletes();
         });

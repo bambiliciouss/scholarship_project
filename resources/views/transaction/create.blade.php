@@ -58,9 +58,19 @@
 
 
                                     <div class="form-group">
-                                        <label for="scholarship"> School Year </label>
+                                        <label for="scholarship"> Type of Scholarship</label>
                                           {!! Form::select('scholarship_id', App\Models\Scholarshipinfo::pluck('sname','scholarship_id'), null,['placeholder' => '--Please select--','class' => 'form-control']) !!}
-                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="school_year">School Year</label>
+                                        <select class="form-control" id="school_year" name="school_year">
+                                            <option value="0" selected="selected" disabled>--Please Select--</option>
+                                            @foreach($appliperiod as $id => $description)
+                                                <option value="{{ $id }}">{{ $description }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
 
                                     <div class="form-group">
