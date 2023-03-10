@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>@yield('title')</title>
-        @include('layouts.head')
-    </head>
-<body>
-    
+@extends('layouts.master')
+@section('title', ' Application')
+@section('content')
 <section class="content">
-    <br> <br><br><br>
+    <br> 
     <div class="container-fluid">
         <div class="row">
             <!-- left column -->
@@ -19,7 +12,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Student Registration</h3>
+                        <h3 class="card-title">Application Form</h3>
                     </div><!-- /.card-header -->
 
                     <!-- form start -->
@@ -138,7 +131,7 @@
                         </div>
                         <!-- /.card-body -->                
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary">Submit Application</button>
                             <a href="{{url()->previous()}}" class="btn btn-default float-right">Cancel</a>
                         </div>
                     </form>
@@ -151,6 +144,5 @@
 
 
 @include('layouts.foot')
-</body>
 
-</html>
+@endsection

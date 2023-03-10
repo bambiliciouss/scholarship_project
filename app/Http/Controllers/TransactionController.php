@@ -181,7 +181,7 @@ class TransactionController extends Controller
 
         DB::commit();
 
-       return Redirect::to('/signup');
+       return Redirect::to('/scholarshipdashboard');
    }
 
 

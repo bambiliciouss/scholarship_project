@@ -75,6 +75,13 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="{{ route('transaction.getApplications') }}" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>Applications</p>
+              </a>
+            </li>
+
     
             <li class="nav-header">ACCOUNT</li>
             <!-- User Menu -->
@@ -118,15 +125,15 @@
                   </p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item">
+                <a href="{{ route('transaction.create') }}" class="nav-link">
                   <i class="nav-icon far fa-plus-square"></i>
                   <p>
-                    Add Student
+                    Apply
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{ route('getStudents') }}" class="nav-link">
                   <i class="nav-icon far fa-user"></i>
                   <p>
