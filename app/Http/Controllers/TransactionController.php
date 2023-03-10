@@ -226,8 +226,21 @@ class TransactionController extends Controller
 
 
        ->get();
+
+      $appliupdate1 = DB::table('application_transactions')
+      ->join('application_periods', 'application_transactions.applicationPeriod_id', '=', 'application_periods.applicationPeriod_id')
+      ->where('application_periods.scholarship_expiration', '<=', now())
+      ->where('application_transactions.status', '=', 'approved')
+      ->update(['application_transactions.status' => 'completed']);
+
+      $appliupdate2 = DB::table('application_transactions')
+      ->join('application_periods', 'application_transactions.applicationPeriod_id', '=', 'application_periods.applicationPeriod_id')
+      ->where('application_periods.scholarship_expiration', '<=', now())
+      ->where('application_transactions.status', '=', 'rejected')
+      ->update(['application_transactions.status' => 'try again next semester']);
+
         //dd($customers);
-        return view('transaction.transactions',compact('appli'));
+        return view('transaction.transactions',compact('appli', 'appliupdate1', 'appliupdate2'));
     }
 
     public function viewcor($id){
