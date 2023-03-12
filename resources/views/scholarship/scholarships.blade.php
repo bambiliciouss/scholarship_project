@@ -31,7 +31,7 @@
                 <th>Scholarship Id</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Edit</th>
+                {{-- <th>Edit</th> --}}
                 <th>Actions</th>
         
 
@@ -48,16 +48,30 @@
                       
                     
                       <td align="center">
-                        @if (!$scholar->deleted_at)
+                        {{-- @if (!$scholar->deleted_at)
                         <a href="#editScholarship{{$scholar->scholarship_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
                         @include('scholarship.edit')  
                         @else
                         <a class="badge badge-pill badge-secondary">Edit</a> <br>
+                        @endif --}}
+
+                        @if(!$scholar->deleted_at)
+                        <a href="#editScholarship{{$scholar->scholarship_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
+                      
+                        <a class="badge badge-pill badge-secondary">Restore</a> <br>
+                        {!! Form::open(array('route' => array('scholarship.destroy', $scholar->scholarship_id),'method'=>'DELETE')) !!}
+                        <button class="badge badge-pill badge-danger">Delete </button>
+                        {!! Form::close() !!}
+                        @else
+                        <a class="badge badge-pill badge-secondary">Edit</a> <br>
+                        <a href="{{ route('scholarship.restore',$scholar->scholarship_id) }}"class="badge badge-pill badge-warning" >Restore</a> <br>
+                        <a class="badge badge-pill badge-secondary">Delete</a>
                         @endif
+
                       </td>
+                      @include('scholarship.edit')  
 
-
-                      <td align="center">
+                      {{-- <td align="center">
                         @if(!$scholar->deleted_at)
                         <a class="badge badge-pill badge-secondary">Restore</a> <br>
                         {!! Form::open(array('route' => array('scholarship.destroy', $scholar->scholarship_id),'method'=>'DELETE')) !!}
@@ -67,7 +81,7 @@
                         <a href="{{ route('scholarship.restore',$scholar->scholarship_id) }}"class="badge badge-pill badge-warning" >Restore</a> <br>
                         <a class="badge badge-pill badge-secondary">Delete</a>
                         @endif
-                      </td>
+                      </td> --}}
                      
 
                      

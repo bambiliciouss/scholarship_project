@@ -32,7 +32,7 @@
                 <th>Application Status</th>
                 <th>Application Period</th>
                 <th>Scholarship</th>
-                <th>Enrolment Form</th>
+                {{-- <th>Enrolment Form</th>
                 <th>Grades</th>
                 <th>Junior Record</th>
                 <th>Senior Record</th>
@@ -41,8 +41,9 @@
                 <th>Cert of Honors</th>
                 <th>Parents Voters</th>
                 <th>Applicant Voters</th>
-                <th>Birth Cert</th>
+                <th>Birth Cert</th> --}}
                 <th>Status</th>
+                <th>Show</th>
                 {{-- <th>Edit</th>
                 <th>Actions</th> --}}
         
@@ -61,7 +62,7 @@
                       <td>{{ $applis->application_status}}</td>
                       <td>{{ $applis->syear_semester}} </td>
                       <td>{{ $applis->scho_name}} </td>
-                      <td><a href="{{ url('/viewcor', $applis->application_transaction_id) }}">View</a> </td>
+                      {{-- <td><a href="{{ url('/viewcor', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewgrades', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewjuniorrecords', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewseniorrecords', $applis->application_transaction_id) }}">View</a> </td>
@@ -70,10 +71,11 @@
                       <td><a href="{{ url('/viewcerthonors', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewparentvoters', $applis->application_transaction_id) }}">View</a> </td>
                       <td><a href="{{ url('/viewapplicantvoters', $applis->application_transaction_id) }}">View</a> </td>
-                      <td><a href="{{ url('/viewbirthcert', $applis->application_transaction_id) }}">View</a> </td>
+                      <td><a href="{{ url('/viewbirthcert', $applis->application_transaction_id) }}">View</a> </td> --}}
                       <td>{{ $applis->status}}</td>
-
-
+                      <td>  <a href="#showapplication{{$applis->application_transaction_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Show</a>
+                     </td>
+                     @include('transaction.showdetails')
                       {{-- <td>{{ $acadyear->description}}</td>
                       
                     

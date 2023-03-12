@@ -133,16 +133,16 @@
                   </p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="{{ route('getStudents') }}" class="nav-link">
+              <li class="nav-item">
+                <a href="{{ route('transaction.showtransactionhistory') }}" class="nav-link">
                   <i class="nav-icon far fa-user"></i>
                   <p>
-                    Students
+                    Applications
                   </p>
                 </a>
               </li>
   
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{ route('getEmployees') }}" class="nav-link">
                   <i class="nav-icon far fa-user"></i>
                   <p>Employees</p>

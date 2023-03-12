@@ -34,7 +34,7 @@
                 <th>Start of Application</th>
                 <th>End of Application</th>
                 <th>Scholarship Expiration</th>
-                <th>Edit</th>
+                {{-- <th>Edit</th> --}}
                 <th>Actions</th>
         
 
@@ -52,24 +52,26 @@
                       <td>{{ $appliperiod->end_application}}</td>
                       <td>{{ $appliperiod->scholarship_expiration}}</td>
  
-                      <td align="center">
+                      {{-- <td align="center">
                         @if (!$appliperiod->deleted_at)
                         <a href="#editApplicationPeriod{{$appliperiod->applicationPeriod_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
                        
                         @else
                         <a class="badge badge-pill badge-secondary">Edit</a> <br>
                         @endif
-                      </td>
+                      </td> --}}
                       @include('applicationperiod.edit')  
                       
                      
                       <td align="center">
                         @if(!$appliperiod->deleted_at)
+                        <a href="#editApplicationPeriod{{$appliperiod->applicationPeriod_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a> <br>
                         <a class="badge badge-pill badge-secondary">Restore</a> <br>
                         {!! Form::open(array('route' => array('applicationperiod.destroy', $appliperiod->applicationPeriod_id),'method'=>'DELETE')) !!}
                         <button class="badge badge-pill badge-danger">Delete </button>
                         {!! Form::close() !!}
                         @else
+                        <a class="badge badge-pill badge-secondary">Edit</a> <br>
                         <a href="{{ route('applicationperiod.restore',$appliperiod->applicationPeriod_id) }}"class="badge badge-pill badge-warning" >Restore</a> <br>
                         <a class="badge badge-pill badge-secondary">Delete</a>
                         @endif

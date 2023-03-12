@@ -30,7 +30,7 @@
               <tr>
                 <th>Academic Year Id</th>
                 <th>Description</th>
-                <th>Edit</th>
+                {{-- <th>Edit</th> --}}
                 <th>Actions</th>
         
 
@@ -45,23 +45,27 @@
                       <td>{{ $acadyear->description}}</td>
                       
                     
-                      <td align="center">
+                      {{-- <td align="center">
                         @if (!$acadyear->deleted_at)
                         <a href="#editAcademicYear{{$acadyear->acadyears_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
                        
                         @else
                         <a class="badge badge-pill badge-secondary">Edit</a> <br>
                         @endif
-                      </td>
+                      </td> --}}
                       
                       @include('academicyear.edit')  
                       <td align="center">
                         @if(!$acadyear->deleted_at)
-                        <a class="badge badge-pill badge-secondary">Restore</a> <br>
+                        <a href="#editAcademicYear{{$acadyear->acadyears_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Edit</a>
+                        <br>
+                        <a class="badge badge-pill badge-secondary">Restore</a>
+                        <br>
                         {!! Form::open(array('route' => array('academicyear.destroy', $acadyear->acadyears_id),'method'=>'DELETE')) !!}
                         <button class="badge badge-pill badge-danger">Delete </button>
                         {!! Form::close() !!}
                         @else
+                        <a class="badge badge-pill badge-secondary">Edit</a> <br>
                         <a href="{{ route('academicyear.restore',$acadyear->acadyears_id) }}"class="badge badge-pill badge-warning" >Restore</a> <br>
                         <a class="badge badge-pill badge-secondary">Delete</a>
                         @endif
