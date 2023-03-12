@@ -2,30 +2,25 @@
 @section('title', 'Applications')
 @section('content')
 <section class="content">
-    @if ($message = Session::get('error'))
-    <div class="alert alert-danger alert-block">
-      <button type="button" class="close" data-dismiss="alert">×</button> 
-      <strong>{{ $message }}</strong>
-    </div>
-    @endif
-    
-    @if ($message = Session::get('success'))
-    <div class="alert alert-light alert-block">
-      <button type="button" class="close" data-dismiss="alert">×</button> 
-      <strong>{{ $message }}</strong>
-    </div>
-    @endif
+  
   <div class="container-fluid">
 
     <br><br>
     <div class="row">
       <div class="col-12">
-        @if ($message = Session::get('success'))
-        <div class="alert alert-light alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button> 
-          <strong>{{ $message }}</strong>
-        </div>
-        @endif
+          @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong>{{ $message }}</strong>
+            </div>
+            @endif
+            
+            @if ($message = Session::get('success'))
+            <div class="alert alert-light alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong>{{ $message }}</strong>
+            </div>
+            @endif
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Application History</h3>

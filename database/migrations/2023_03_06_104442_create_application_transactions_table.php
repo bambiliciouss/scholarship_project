@@ -37,6 +37,8 @@ return new class extends Migration
             $table->text('status')->default('processing');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique(['student_id', 'applicationPeriod_id']);
         });
     }
 

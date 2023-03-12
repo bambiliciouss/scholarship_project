@@ -77,7 +77,8 @@
 
             <li class="nav-item">
               <a href="{{ route('transaction.getApplications') }}" class="nav-link">
-                <i class="nav-icon fas fa-calendar-alt"></i>
+                <i class="nav-icon fas fa-file"></i>
+               
                 <p>Applications</p>
               </a>
             </li>
@@ -87,6 +88,7 @@
             <!-- User Menu -->
             <li class="nav-item">
               <a href="{{ route('employee.profile') }}" class="nav-link">
+                <i class="fa-regular fa-files"></i>
               <i class="far fa-user nav-icon"></i>
               <p>
                 Profile

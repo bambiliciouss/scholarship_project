@@ -2,6 +2,12 @@
 @section('title', ' Application')
 @section('content')
 <section class="content">
+    @error('applicationPeriod_id')
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            <strong>{{ $message }}</strong>
+        </div>
+     @enderror
     <br> 
     <div class="container-fluid">
         <div class="row">
@@ -28,6 +34,8 @@
                                
                                 <div class="col-sm-12">
                                     <div class="form-group">
+                                        <input type="text" class="form-control" id="student_id" name="student_id" value="{{ $student }}" hidden >
+
                                         <label for="lname">School Name</label>
                                         <input type="text" class="form-control" id="school_name" name="school_name" placeholder="Enter school name" required>
                                     </div>
@@ -64,13 +72,16 @@
 
                                     <div class="form-group">
                                         <label for="school_year">School Year</label>
-                                        <select class="form-control" id="school_year" name="school_year">
+                                        <select class="form-control" id="applicationPeriod_id" name="applicationPeriod_id">
                                             <option value="0" selected="selected" disabled>--Please Select--</option>
                                             @foreach($appliperiod as $id => $description)
                                                 <option value="{{ $id }}">{{ $description }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    
+
 
 
                                     <div class="form-group">

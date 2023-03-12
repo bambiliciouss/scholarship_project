@@ -11,6 +11,8 @@ use DB;
 use View;
 use Redirect;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
+
 class TransactionController extends Controller
 {
     public function getcreate(){
@@ -22,12 +24,42 @@ class TransactionController extends Controller
                     ->pluck('full_description', 'application_periods.applicationPeriod_id');
           
                    // dd($categories);
-          return view('transaction.create',  compact('appliperiod'));
+                   $stud = Studentinfo::where('user_id',Auth::id())->first();
+                   $student = Studentinfo::where('user_id',$stud->user_id)->first()->student_id;
+
+          return view('transaction.create',  compact('appliperiod', 'student'));
     }
 
     public function store(Request $request){
 
-        $id = $request->school_year;
+        
+        // $stud = Studentinfo::where('user_id',Auth::id())->first();
+        // $student = Studentinfo::where('user_id',$stud->user_id)->first()->student_id;
+
+
+        // $request->validate([
+        //     'school_year' => 'unique:application_transactions,applicationPeriod_id|required',
+        // ], [
+        //     'unique' => 'You already have an application to this school year and semester.',
+        // ]);
+
+        $request->validate([
+            'student_id' => 'required',
+            'applicationPeriod_id' => [
+                'required',
+                Rule::unique('application_transactions')->where(function ($query) use ($request) {
+                    return $query->where('student_id', $request->student_id)
+                                 ->where('applicationPeriod_id', $request->applicationPeriod_id);
+                }),
+            ],
+        ], [
+   
+            'applicationPeriod_id.unique' => 'You already have an application to this school year and semester.',
+        ]);
+
+        
+
+        $id = $request->applicationPeriod_id;
         // dd($id);
         $appliperiod = ApplicationPeriod::find($id);
         if ($appliperiod->end_application < now()) {
@@ -59,7 +91,7 @@ class TransactionController extends Controller
             $docs->school_name = $request->school_name;
             $docs->year_level = $request->year_level;
             $docs->application_status = $request->application_status;
-            $docs->applicationPeriod_id =$request->school_year;
+            $docs->applicationPeriod_id =$request->applicationPeriod_id;
             $docs->scholarship_id = $request->scholarship_id;
             $docs->status = "Processing";
 
@@ -204,12 +236,12 @@ class TransactionController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
             // dd($order);
-            return Redirect::to('/logins')->with('error', $th->getMessage());
+            return Redirect::to('/showtransactions')->with('error', $th->getMessage());
         }
 
         DB::commit();
 
-       return Redirect::to('/scholarshipdashboard')->with('success','Application is submitted');
+       return Redirect::to('/showtransactions')->with('success','Application is submitted');
     }
    }
 

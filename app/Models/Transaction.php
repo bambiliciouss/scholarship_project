@@ -16,6 +16,10 @@ class Transaction extends Model
     protected $fillable = ['student_id', 'school_name', 'year_level', 'application_status', 'applicationPeriod_id' , 'scholarship_id', 'enrollment_form', 'grades_copy','junior_record', 'senior_record', 'validID', 'form_137', 'cert_honors', 'voterscert_parent','votercert_applicant', 'birthcert'];
 
 
+    public static $rules = [
+        'applicationPeriod_id' =>'unique'];
+
+
     public function students() 
     {
         return $this->belongsTo(StudentInfo::class,'student_id');
