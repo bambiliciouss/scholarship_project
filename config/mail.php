@@ -43,6 +43,11 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'from' => [
+                'address' => 'lanischolarship@yahoo.com',
+                'name' => 'LANI SCHOLARSHIP',
+            ],
+
         ],
 
         'ses' => [

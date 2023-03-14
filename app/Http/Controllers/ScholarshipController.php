@@ -57,7 +57,7 @@ class ScholarshipController extends Controller
         $scholar = Scholarshipinfo::find($scholarship_id);
         $scholar->delete();
 
-    return Redirect::to('/scholarships')->with('success','Type of Scholarship is Deleted!');
+    return Redirect::to('/scholarships')->with('error','Type of Scholarship is Deleted!');
     }
 
 
@@ -66,7 +66,7 @@ class ScholarshipController extends Controller
     
         Scholarshipinfo::withTrashed()->where('scholarship_id',$scholarship_id)->restore();
     
-    return Redirect::to('/scholarships')->with('success','Type of Scholarship is Restored!');
+    return Redirect::to('/scholarships')->with('info','Type of Scholarship is Restored!');
     }
 
 

@@ -7,12 +7,12 @@
     <br><br>
     <div class="row">
       <div class="col-12">
-        @if ($message = Session::get('success'))
+        {{-- @if ($message = Session::get('success'))
         <div class="alert alert-light alert-block">
           <button type="button" class="close" data-dismiss="alert">×</button> 
           <strong>{{ $message }}</strong>
         </div>
-        @endif
+        @endif --}}
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">List of Applications</h3>
@@ -44,6 +44,7 @@
                 <th>Birth Cert</th> --}}
                 <th>Status</th>
                 <th>Show</th>
+                <th>Approval</th>
                 {{-- <th>Edit</th>
                 <th>Actions</th> --}}
         
@@ -76,6 +77,7 @@
                       <td>  <a href="#showapplication{{$applis->application_transaction_id}}" class="badge badge-pill badge-primary" data-toggle="modal"  >Show</a>
                      </td>
                      @include('transaction.showdetails')
+                     <td><a href="{{ route('email.send',$applis->application_transaction_id) }}"class="badge badge-pill badge-warning" >Approved</a> <br></td>
                       {{-- <td>{{ $acadyear->description}}</td>
                       
                     
@@ -125,6 +127,7 @@
 
 
 @include('layouts.foot')
+@include('layouts.message')
 <script>
     $(function () {
       $("#example1").DataTable({

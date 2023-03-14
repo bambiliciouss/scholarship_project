@@ -88,15 +88,6 @@
 
 
 @include('layouts.foot')
-<script>
-    $(function () {
-      $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-     
-    })
-
-
-    });
-  </script>
+@include('layouts.message')
 </section>
 @endsection

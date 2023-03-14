@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravelcollective/html": "^6.3",
+        "mckenziearts/laravel-notify": "^2.3",
         "spatie/pdf-to-text": "^1.52",
         "yajra/laravel-datatables": "9.0"
     },

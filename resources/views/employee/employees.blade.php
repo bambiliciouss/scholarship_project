@@ -6,12 +6,12 @@
   <div class="container-fluid">
 
     <br><br>
-    @if ($message = Session::get('success'))
+    {{-- @if ($message = Session::get('success'))
     <div class="alert alert-primary alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button> 
     <strong>{{ $message }}</strong>
   </div>
-@endif
+@endif --}}
     <div class="row">
       <div class="col-12">
         <div class="card">
@@ -88,7 +88,8 @@
 
 
 @include('layouts.foot')
-<script>
+@include('layouts.message')
+{{-- <script></script>
     $(function () {
       $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -97,6 +98,6 @@
 
 
     });
-  </script>
+  </script> --}}
 </section>
 @endsection

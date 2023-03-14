@@ -47,7 +47,9 @@ class AcademicYearController extends Controller
 
 
         //return Redirect::to('/employee')->with('success','Updated!');*/
+        // return redirect()->route('getallyears')->with('success','Academic Year Details Updated!');
         return redirect()->route('getallyears')->with('success','Academic Year Details Updated!');
+        
     }
     public function destroy($acadyears_id)
     {
@@ -55,7 +57,7 @@ class AcademicYearController extends Controller
         $acad = AcademicYear::find($acadyears_id);
         $acad->delete();
 
-    return Redirect::to('/academicyears')->with('success','Academic Year is Deleted!');
+    return Redirect::to('/academicyears')->with('error','Academic Year is Deleted!');
     }
 
 
@@ -64,7 +66,7 @@ class AcademicYearController extends Controller
     
         AcademicYear::withTrashed()->where('acadyears_id',$acadyears_id)->restore();
     
-    return Redirect::to('/academicyears')->with('success','Academic Year is Restored!');
+    return Redirect::to('/academicyears')->with('info','Academic Year is Restored!');
     }
 
 

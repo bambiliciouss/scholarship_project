@@ -97,7 +97,7 @@
           </li><!-- /.user menu -->
           <li class="nav-item">
             <a href="{{ route('user.logout') }}" class="nav-link">
-              <i class="far fa-image nav-icon"></i>
+              <i class="nav-icon fa-solid fa-right-from-bracket"></i>
               <p>
                 Logout
               </p>
@@ -163,7 +163,7 @@
             </li><!-- /.user menu -->
             <li class="nav-item">
               <a href="{{ route('user.logout') }}" class="nav-link">
-                <i class="far fa-image nav-icon"></i>
+                <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                 <p>
                   Logout
                 </p>

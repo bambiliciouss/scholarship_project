@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Controllers\LoginController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailNotification;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +27,12 @@ Route::get('/home', function () {
 Route::get('/logins', function () {
     return View::make('login');
    });
+
+Route::get('/sendmail/{id}', 'MailController@index')->name('email.send');
+// Route::get('/sendmail', function () {
+//     Mail::to('marianina091702@gmail.com')
+//     ->send(new EmailNotification());
+// });
 
 
 // Route::get('/scholarshipdashboard', function () {

@@ -59,7 +59,7 @@ class ApplicationPeriodController extends Controller
         $acad = ApplicationPeriod::find($applicationPeriod_id);
         $acad->delete();
 
-    return Redirect::to('/applicationperiods')->with('success','Application Period is Deleted!');
+    return Redirect::to('/applicationperiods')->with('error','Application Period is Deleted!');
     }
 
 
@@ -68,7 +68,7 @@ class ApplicationPeriodController extends Controller
     
         ApplicationPeriod::withTrashed()->where('applicationPeriod_id',$applicationPeriod_id)->restore();
     
-    return Redirect::to('/applicationperiods')->with('success','Application Period is Restored!');
+    return Redirect::to('/applicationperiods')->with('info','Application Period is Restored!');
     }
 
 }

@@ -158,7 +158,7 @@ class StudentController extends Controller
         $user->save();
 
         //return Redirect::to('/employee')->with('success','Updated!');*/
-          return redirect()->route('user.profile');
+          return redirect()->route('user.profile')->with('success','Student Profile is Updated!');
  
     }
 
@@ -186,7 +186,7 @@ class StudentController extends Controller
         $student = Studentinfo::find($student_id);
         $student->delete();
 
-       return Redirect::to('/students')->with('success','Student Account Deactivated!');
+       return Redirect::to('/students')->with('error','Student Account Deactivated!');
     }
 
 
@@ -195,7 +195,7 @@ class StudentController extends Controller
        
         Studentinfo::withTrashed()->where('student_id',$student_id)->restore();
       
-       return Redirect::to('/students')->with('success','Student Account Activated!');
+       return Redirect::to('/students')->with('info','Student Account Activated!');
     }
 
 

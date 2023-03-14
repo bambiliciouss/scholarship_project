@@ -13,13 +13,16 @@
   <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
 </head>
 <body class="hold-transition login-page">
   
 
 <div class="login-box">
 
-  @if ($message = Session::get('error'))
+  {{-- @if ($message = Session::get('error'))
   <div class="alert alert-danger alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button> 
     <strong>{{ $message }}</strong>
@@ -31,7 +34,7 @@
     <button type="button" class="close" data-dismiss="alert">×</button> 
     <strong>{{ $message }}</strong>
   </div>
-  @endif
+  @endif --}}
   
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
@@ -93,13 +96,15 @@
   <!-- /.card -->
 </div>
 <!-- /.login-box -->
-
+{{-- @include('layouts.message') --}}
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@include('layouts.message')
 <script>
   function myFunction() {
   var x = document.getElementById("myInput");
@@ -109,6 +114,11 @@
     x.type = "password";
   }
 }
+
+
+
+
 </script>
+
 </body>
 </html>

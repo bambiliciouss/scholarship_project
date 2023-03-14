@@ -7,12 +7,16 @@
     <br><br>
     <div class="row">
       <div class="col-12">
-        @if ($message = Session::get('success'))
+        {{-- @if ($message = Session::get('success'))
         <div class="alert alert-light alert-block">
           <button type="button" class="close" data-dismiss="alert">×</button> 
           <strong>{{ $message }}</strong>
         </div>
-        @endif
+        @endif --}}
+
+     
+        
+
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">List of Academic Year</h3>
@@ -95,7 +99,9 @@
 
 
 @include('layouts.foot')
-<script>
+
+@include('layouts.message')
+{{-- <script>
     $(function () {
       $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -104,6 +110,55 @@
 
 
     });
-  </script>
+  </script> --}}
+  {{-- <script>
+    //  @if (Session::has('success'))
+    //  toastr.options={
+    //   "closeButton":true,
+    //   "progressBar":true,
+    //   "timeOut": "3000",
+
+    //  }
+    //    toastr.success("{{ session('success') }}")
+    //   // toastr.success("{{Session::get('message')}}", 'Success!',{timeOut:5000});
+    //     @endif
+
+    @if(Session::has('success'))
+      toastr.options =
+      {
+        "closeButton" : true,
+        "progressBar" : true
+      }
+  		toastr.success("{{ session('success') }}");
+  @endif
+
+  @if(Session::has('error'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.error("{{ session('error') }}");
+  @endif
+
+  @if(Session::has('info'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.info("{{ session('info') }}");
+  @endif
+
+  @if(Session::has('warning'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.warning("{{ session('warning') }}");
+  @endif
+
+  </script> --}}
 </section>
 @endsection

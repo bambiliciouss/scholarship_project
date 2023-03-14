@@ -7,12 +7,12 @@
     <br><br>
     <div class="row">
       <div class="col-12">
-        @if ($message = Session::get('success'))
+        {{-- @if ($message = Session::get('success'))
         <div class="alert alert-light alert-block">
           <button type="button" class="close" data-dismiss="alert">×</button> 
           <strong>{{ $message }}</strong>
         </div>
-        @endif
+        @endif --}}
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">List of Application Period</h3>
@@ -101,15 +101,7 @@
 
 
 @include('layouts.foot')
-<script>
-    $(function () {
-      $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-     
-    })
+@include('layouts.message')
 
-
-    });
-  </script>
 </section>
 @endsection
